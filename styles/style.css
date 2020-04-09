@@ -1,0 +1,7 @@
+body {
+    background-color: paleturquoise;
+}
+
+p, h1, h2, h3, h4, label {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
