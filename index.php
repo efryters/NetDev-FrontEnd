@@ -15,7 +15,7 @@
             $_SESSION['pin'] = $row['pin'];
             $_SESSION['fName'] = $row['fName'];
             $_SESSION['lName'] = $row['lName'];
-            header("Location: http://localhost/project/files/main.php");
+            header("Location: http://localhost/NetDev-FrontEnd/files/main.php");
         }
         else
         {
@@ -61,7 +61,7 @@
 		
 		echo '<div class="form-group">';
 		echo "<label> Employee ID:   </label>";
-		echo '<select class="employee-select" name = "employee" >';
+		echo '<select class="employee-select" name = "employeeID" >';
 		
 		foreach ($res as $row) 
 		{
