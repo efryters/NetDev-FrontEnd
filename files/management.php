@@ -3,7 +3,7 @@
 ?>
 
 <div class="content">
-            <h2>Main</h2>
+            <h2>Management</h2>
             <p>
             </p>
         </div>

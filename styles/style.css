@@ -2,6 +2,75 @@ body {
     background-color: paleturquoise;
 }
 
-p, h1, h2, h3, h4, label {
+p, h1, h2, h3, h4, label, a, table {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+
+
+
+.header-wrapper {
+    margin: 0 auto;
+    width: 90%;
+    height: 100px;
+    background-color: blanchedalmond;
+}
+
+.header-title {
+    height: 100px;
+    width: 50%;
+    float: left;
+}
+.header-personalize {
+    height: 100px;
+    width: 50%;
+    float: left;
+    text-align: right;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    background-color: blanchedalmond;
+}
+
+.navbar {
+    background-color: red;
+    width: 15%;
+    float: left;
+    height: 200px;
+}
+a.navbar-text {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.content {
+    background-color: green;
+    width: 85%;
+    float: left;
+    height: 100%;
+}
+
+.login-content {
+    background-color: green;
+    width: 100%;
+    float: left;
+    height: 100%;
+}
+
+th {
+    background-color: gray;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+tr {
+    background-color: white;
+}
+tr:nth-child(2n) {
+    background-color: whitesmoke;
 }

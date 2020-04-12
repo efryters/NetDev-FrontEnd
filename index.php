@@ -31,21 +31,37 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" type="text/css" href="styles/style.css">
-    </head>
-    <body>
-        <h1>Punch System</h1>
-        <h3>Please login below:</h3>
-        <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
-            <label for="empoyeeID">Employee #:</label>
-            <input name="employeeID" type="text" maxlength="4" pattern="[0-9]{4}">
-            <br>
-            <label for="employeePIN">Employee PIN: </label>
-            <input name="employeePIN" type="text" maxlength="4" pattern="[0-9]{4}">
-            <br>
-            <input type="submit" name="submit"> <input type="reset">
-        </form>
-    </body>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="header-title">
+                <h1>Punch Management System</h1>
+            </div>
+            <div class="header-personalize">
+                
+            </div>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="login-content">
+            <h3>Please login below:</h3>
+            <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+                <label for="empoyeeID">Employee #:</label>
+                <input name="employeeID" type="text" maxlength="4" pattern="[0-9]{4}">
+                <br>
+                <label for="employeePIN">Employee PIN: </label>
+                <input name="employeePIN" type="text" maxlength="4" pattern="[0-9]{4}">
+                <br>
+                <input type="submit" name="submit"> <input type="reset">
+            </form>
+        </div>
+    </div>
+</body>
+
 </html>
