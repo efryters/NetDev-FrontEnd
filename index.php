@@ -3,7 +3,7 @@
 
     if ( isset($_POST['submit']))
     {
-        $db = new PDO('sqlite:data.db');
+        $db = new PDO('sqlite:./data.db');
         $stmt = $db->prepare('SELECT id, pin, fName, lName FROM employees WHERE id = :id AND pin = :pin');
         $stmt->bindParam(':id', $_POST['employeeID'], PDO::PARAM_STR);
         $stmt->bindParam(':pin', $_POST['employeePIN'], PDO::PARAM_STR);
@@ -35,6 +35,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="shortcut icon" href="./styles/signin.png">
 </head>
 
 <body>
@@ -52,8 +53,25 @@
         <div class="login-content">
             <h3>Please login below:</h3>
             <form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
-                <label for="empoyeeID">Employee #:</label>
-                <input name="employeeID" type="text" maxlength="4" pattern="[0-9]{4}">
+        <?php
+	
+		$db = new PDO('sqlite:./data.db');
+		$db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$res = $db -> query('select * from employees');
+		
+		echo '<div class="form-group">';
+		echo "<label> Employee ID:   </label>";
+		echo '<select class="employee-select" name = "employee" >';
+		
+		foreach ($res as $row) 
+		{
+			$id = $row['id'];
+			$name = $row['fName'];
+			echo '<option value="'.$id.'">'.$name.'</option>';
+			
+		}
+		echo "</select></div>";
+	?>
                 <br>
                 <label for="employeePIN">Employee PIN: </label>
                 <input name="employeePIN" type="text" maxlength="4" pattern="[0-9]{4}">
