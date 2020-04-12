@@ -1,6 +1,11 @@
 <?php
     session_start();
 
+    if ( isset($_SESSION['id']))
+    {
+        header("Location: ./files/main.php");
+    }
+
     if ( isset($_POST['submit']))
     {
         $db = new PDO('sqlite:./data.db');
@@ -15,7 +20,7 @@
             $_SESSION['pin'] = $row['pin'];
             $_SESSION['fName'] = $row['fName'];
             $_SESSION['lName'] = $row['lName'];
-            header("Location: http://localhost/NetDev-FrontEnd/files/main.php");
+            header("Location: ./files/main.php");
         }
         else
         {
@@ -59,7 +64,6 @@
 		$db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$res = $db -> query('select * from employees');
 		
-		echo '<div class="form-group">';
 		echo "<label> Employee ID:   </label>";
 		echo '<select class="employee-select" name = "employeeID" >';
 		
@@ -70,7 +74,7 @@
 			echo '<option value="'.$id.'">'.$name.'</option>';
 			
 		}
-		echo "</select></div>";
+		echo "</select>";
 	?>
                 <br>
                 <label for="employeePIN">Employee PIN: </label>
