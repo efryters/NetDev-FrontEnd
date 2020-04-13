@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $bad_login = false;
 
     if ( isset($_SESSION['id']))
     {
@@ -24,7 +25,7 @@
         }
         else
         {
-            echo 'Invalid user/pin!';
+            $bad_login = true;
         }
          
         // process login, check DB for credentials and create session ID for control pages
@@ -80,7 +81,14 @@
                 <label for="employeePIN">Employee PIN: </label>
                 <input name="employeePIN" type="text" maxlength="4" pattern="[0-9]{4}">
                 <br>
+                <br>
                 <input type="submit" name="submit"> <input type="reset">
+                <?php
+                    if ($bad_login)
+                    {
+                        echo "<p>Incorrect credentials.</p>";
+                    }
+                    ?>
             </form>
         </div>
     </div>

@@ -3,6 +3,41 @@
 
     if ( isset( $_SESSION['id'] ))
     {
+        // Determine user data.
+        $query_str = "
+        SELECT employees.id, employees.fName, employees.lName, employees.role, employeeRole.role
+        FROM employees
+        INNER JOIN employeeRole
+        ON employees.role = employeeRole.id
+        WHERE employees.id = :id
+        ";
+        $db = new PDO('sqlite:./../data.db');
+        $stmt = $db->prepare($query_str);
+        $stmt->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
+        $stmt->execute();
+        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if ($row)
+        {
+            $user['id'] = $row['id'];
+            $user['fName'] = $row['fName'];
+            $user['lName'] = $row['lName'];
+            $user['role'] = $row['role'];
+        }
+        
+        // Get all roles
+        $query_str = "
+        SELECT id, role
+        FROM employeeRole
+        ";
+        $stmt = $db->prepare($query_str);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        foreach ($rows as $row)
+        {
+            $roles[$row['id']] = $row['role'];
+        }
+
+        $db = NULL;
         // Load page
         echo "
         
@@ -21,7 +56,7 @@
                         <h1>Punch Management System</h1>
                     </div>
                     <div class=\"header-personalize\">
-                        <h2>Welcome {$_SESSION['fName']} {$_SESSION['lName']} </h2>
+                        <h2>Welcome {$user['role']}: {$user['fName']} {$user['lName']} </h2>
                         
                     </div>
                 </div>
