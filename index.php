@@ -4,7 +4,7 @@
 
     if ( isset($_SESSION['id']))
     {
-        header("Location: ./files/main.php");
+       header("Location: ./files/main.php");
     }
 
     if ( isset($_POST['submit']))
@@ -65,7 +65,7 @@
 		$db -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$res = $db -> query('select * from employees');
 		
-		echo "<label> Employee ID:   </label>";
+		echo "<label> Employee ID:  </label>";
 		echo '<select class="employee-select" name = "employeeID" >';
 		
 		foreach ($res as $row) 
