@@ -43,7 +43,7 @@
 				if ($parse)
 				{
 				$pres_update = 1;	
-				$punch_in = time();		
+				$punch_in = $_SERVER['REQUEST_TIME'];		
 				
 				$pi_str = "INSERT INTO punchData (employee, timeIn) VALUES (?, ?)";
 				$pi_qry = $db->prepare($pi_str);
@@ -54,6 +54,7 @@
 				$present_qry->execute(array($pres_update, $user['id']));
 				$time = date($dt_format, $punch_in);
 				echo "<br>Punch In Time: $time";
+				header("Refresh:2");
 				}
 			}
 			elseif ($present == 1)
@@ -63,7 +64,7 @@
 				if ($parse)
 				{
 				$pres_update = 0;
-				$punch_out = time();		
+				$punch_out = $_SERVER['REQUEST_TIME'];		
 				
 				$id_str = "SELECT id from punchData WHERE timeOut is NULL AND employee = ?";
 				$id_qry = $db->prepare($id_str);
@@ -79,9 +80,11 @@
 				
 				$time = date($dt_format, $punch_out);
 				echo "<br>Punch Out Time: $time";
+				header("Refresh:2");
 				}
+
 			}
-				
+			
 		?>
 			
 			
