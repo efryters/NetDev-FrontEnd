@@ -5,8 +5,16 @@ body {
 p, h1, h2, h3, h4, label, a, table {
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
-
-
+label{
+    display: inline-block;
+	clear: left;
+    width: 150px;
+    text-align: left;
+}
+input {
+  display: inline-block;
+  
+}
 
 
 .header-wrapper {

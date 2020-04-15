@@ -26,6 +26,7 @@
 <div class="content">
 	<h2>Main</h2>
 	<p>		
+	
 		<form method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
 			
 		<?php
@@ -37,7 +38,8 @@
 			
 			if ($present == 0)
 			{
-				echo '<button name="Punch In" type="submit">Punch In </button>';
+				echo '<button name="PunchIn" type="submit">Punch In </button>';
+			
 				if ($parse)
 				{
 				$pres_update = 1;	
@@ -50,11 +52,14 @@
 				$present_str = "UPDATE employees SET present = ? WHERE id = ?";
 				$present_qry = $db->prepare($present_str);
 				$present_qry->execute(array($pres_update, $user['id']));
+				$time = date($dt_format, $punch_in);
+				echo "<br>Punch In Time: $time";
 				}
 			}
 			elseif ($present == 1)
 			{
-				echo '<button name="Punch Out" type="submit"> Punch Out</button>';
+				echo '<button name="PunchOut" type="submit"> Punch Out </button>';
+			
 				if ($parse)
 				{
 				$pres_update = 0;
@@ -71,6 +76,9 @@
 				$present_str = "UPDATE employees SET present = ? WHERE id = ?";
 				$present_qry = $db->prepare($present_str);
 				$present_qry->execute(array($pres_update, $user['id']));
+				
+				$time = date($dt_format, $punch_out);
+				echo "<br>Punch Out Time: $time";
 				}
 			}
 				
@@ -78,8 +86,10 @@
 			
 			
 		</form>		
+		
     </p>       
 </div>
+
 </body>
 
 </html>

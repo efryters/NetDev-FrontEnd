@@ -25,7 +25,7 @@
             <h3>
                 Most recent punch data:
             </h3>
-            <table>
+            <table class="sortable">
                 <thead>
                     <th>Record</th>
                     <th>Employee #</th>
@@ -34,6 +34,8 @@
                     <th>Time Out</th>
                 </thead>
                 <?php
+
+				
 
                     foreach ($punch_data_rows as $data_row)
                     {
