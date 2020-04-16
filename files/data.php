@@ -46,11 +46,11 @@
                         else
                             $dt_out = "Pending";
                         echo "<tr>";
-                            echo "<td>{$data_row['id']}</td>";
-                            echo "<td>{$data_row['employee']}</td>";
-                            echo "<td>{$data_row['fName']} {$data_row['lName']}</td>";
-                            echo "<td>{$dt_in}</td>";
-                            echo "<td>{$dt_out}</td>";
+						echo "<td>{$data_row['id']}</td>";
+						echo "<td>{$data_row['employee']}</td>";
+						echo "<td>{$data_row['fName']} {$data_row['lName']}</td>";
+						echo "<td>{$dt_in}</td>";
+						echo "<td>{$dt_out}</td>";
                         echo "</tr>";
                     }
                 ?>

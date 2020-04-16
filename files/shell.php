@@ -61,6 +61,9 @@
             <title>Dashboard</title>
             <link rel=\"stylesheet\" type=\"text/css\" href=\"../styles/style.css\">
 			<script src= 'sorttable.js'></script>
+			<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js'></script>
+
+			
         </head>
 
         <body>
