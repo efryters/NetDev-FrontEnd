@@ -7,6 +7,7 @@
 		$parse = true;
 	}
 	
+	
 ?>
 
 	<div class="content">
@@ -34,14 +35,17 @@
 			
 		}
 		else
+		{
 			$employeeID = $user['id'];
-		
+			$parse = true;
+		}
 		
 		if ($parse)
 		{
-			$employeeID = $_POST['employeeName'];
+			if ($user['role'] == "Supervisor")
+				$employeeID = $_POST['employeeName'];
 			$query_str = "
-			SELECT id FROM punchData WHERE employee = ?";
+			SELECT * FROM punchData WHERE employee = ?";
 		
 
 			$db = new PDO('sqlite:./../data.db');
@@ -52,14 +56,17 @@
 			foreach ($punchID as $rec)
 			{
 				$data[$index] = $rec['id'];
-				echo $data[$index];
-				echo"<br>";
+				$timeOut[$index] = $rec['timeOut'];
+				$timeIn[$index] = $rec['timeIn'];
+				$min = 60;
+				$shift[$index] =($timeOut[$index] - $timeIn[$index])/$min;
+				
 				$index++;
 			}
 			
 			$db = NULL;
 		
-			
+			echo "<h3> Record for Employee #{$employeeID} </h3>";
 			
 			echo '<div class="chart-container">
 			<canvas id="employeeChart"></canvas>	';
@@ -71,6 +78,7 @@
 
 				//var pID = <?php echo json_encode($data); ?>;
 				var pID = <?php echo '["' . implode('", "', $data) . '"]' ?>;
+				var shiftTime = <?php echo '["' . implode('", "', $shift) . '"]' ?>;
 				
 				// Example code from chart.js docs
 				var ctx = document.getElementById('employeeChart');
@@ -79,8 +87,8 @@
 					data: {
 						labels: pID,		// Employee punch entry date? Or entry #?
 						datasets: [{
-							label: '# of Votes',
-							data: pID,										// Actual time data per punch [(timeout - timein) / 60 seconds] (epoch time is in seconds)
+							label: 'Employee Punch Info',
+							data: shiftTime,										// Actual time data per punch [(timeout - timein) / 60 seconds] (epoch time is in seconds)
 							backgroundColor: [
 								'rgba(255, 99, 132, 0.2)',
 								'rgba(54, 162, 235, 0.2)',
@@ -101,6 +109,8 @@
 						}]
 					},
 					options: {
+						
+						
 						
 						scales: {
 							yAxes: [{
