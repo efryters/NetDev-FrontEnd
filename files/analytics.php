@@ -43,7 +43,9 @@
 		if ($parse)
 		{
 			if ($user['role'] == "Supervisor")
+			{
 				$employeeID = $_POST['employeeName'];
+			}
 			$query_str = "
 			SELECT * FROM punchData WHERE employee = ?";
 		
@@ -72,14 +74,11 @@
 			echo "<h3> Record for Employee #{$employeeID} </h3>";
 			
 			echo '<div class="chart-container">
-			<canvas id="employeeChart"></canvas>	';
+			<canvas id="employeeChart"></canvas>';
 		}
 		?>
 		</p>
-			
 			<script>
-
-				//var pID = <?php echo json_encode($data); ?>;
 				var pID = <?php echo '["' . implode('", "', $data) . '"]' ?>;
 				var shiftTime = <?php echo '["' . implode('", "', $shift) . '"]' ?>;
 				
@@ -114,12 +113,29 @@
 						}]
 					},
 					options: {
-												
-						scales: {
+						title: {
+							display: true,
+							text: 'Employee Shift Info'
+						},
+						scales: {	
 							yAxes: [{
+								scaleLabel: {
+									display: true,
+									labelString: 'Minutes Worked'
+								  },
+								
 								ticks: {
 									beginAtZero: true
 								}
+							}],
+							xAxes: [{
+								scaleLabel: {
+									display: true,
+									labelString: 'Record #'
+								  }
+								
+								
+								
 							}]
 						}
 					}
