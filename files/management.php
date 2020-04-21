@@ -71,9 +71,9 @@
 		<fieldset>
 
 			<label for="employeefName"> First Name: </label>
-			<input name="employeefName" type="text" id="employeefName" required><br>
+			<input name="employeefName" type="text" id="employeefName" pattern="[A-Za-z]" required><br>
 			<label for="employeelName"> Last Name: </label>
-			<input name="employeelName" type="text" id="employeelName" required><br>
+			<input name="employeelName" type="text" id="employeelName" pattern="[A-Za-z]" required><br>
 			<label for="role"> Role: </label>
 			<select class="employee-select" name="role">
 				<?php

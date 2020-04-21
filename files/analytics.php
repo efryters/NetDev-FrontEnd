@@ -113,6 +113,9 @@
 						}]
 					},
 					options: {
+						legend: {
+							display: false
+						},
 						title: {
 							display: true,
 							text: 'Employee Shift Info'
