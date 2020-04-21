@@ -25,7 +25,7 @@
             <h3>
                 Most recent punch data:
             </h3>
-            <table>
+            <table class="sortable">
                 <thead>
                     <th>Record</th>
                     <th>Employee #</th>
@@ -34,6 +34,8 @@
                     <th>Time Out</th>
                 </thead>
                 <?php
+
+				
 
                     foreach ($punch_data_rows as $data_row)
                     {
@@ -44,11 +46,11 @@
                         else
                             $dt_out = "Pending";
                         echo "<tr>";
-                            echo "<td>{$data_row['id']}</td>";
-                            echo "<td>{$data_row['employee']}</td>";
-                            echo "<td>{$data_row['fName']} {$data_row['lName']}</td>";
-                            echo "<td>{$dt_in}</td>";
-                            echo "<td>{$dt_out}</td>";
+						echo "<td>{$data_row['id']}</td>";
+						echo "<td>{$data_row['employee']}</td>";
+						echo "<td>{$data_row['fName']} {$data_row['lName']}</td>";
+						echo "<td>{$dt_in}</td>";
+						echo "<td>{$dt_out}</td>";
                         echo "</tr>";
                     }
                 ?>
