@@ -110,7 +110,7 @@
 					foreach ($employees as $e)
 					{
 						echo "<tr>";
-						echo "<td>"; echo "<input type=\"radio\" name=\"rdEmployeeID\" value=\"{$e[0]}\" required></input> "; echo "</td>";
+						echo "<td align=\"center\">"; echo "<input type=\"radio\" name=\"rdEmployeeID\" value=\"{$e[0]}\" required></input> "; echo "</td>";
 						echo "<td>"; echo "{$e[0]}"; echo "</td>";
 						echo "<td>"; echo "{$e[1]} {$e[2]}"; echo "</td>";
 						echo "<td>"; echo "{$e[3]}"; echo "</td>";

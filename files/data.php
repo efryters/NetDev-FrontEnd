@@ -21,7 +21,7 @@
 ?>
 
         <div class="content">
-            <h2 style="text-align: center;"><u>Punch Data</u></h2>
+            <h2>Punch Data</h2>
             <h3>
                 Most recent punch data:
             </h3>
@@ -34,9 +34,6 @@
                     <th>Time Out</th>
                 </thead>
                 <?php
-
-				
-
                     foreach ($punch_data_rows as $data_row)
                     {
                         $dt_format = 'Y-m-d H:i:s';

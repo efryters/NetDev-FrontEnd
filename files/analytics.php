@@ -55,11 +55,14 @@
 			$index = 0;
 			foreach ($punchID as $rec)
 			{
-				$data[$index] = $rec['id'];
-				$timeOut[$index] = $rec['timeOut'];
-				$timeIn[$index] = $rec['timeIn'];
-				$min = 60;
-				$shift[$index] =($timeOut[$index] - $timeIn[$index])/$min;
+				if (isset($rec['timeOut'])) 
+				{
+					$data[$index] = $rec['id'];
+					$timeOut[$index] = $rec['timeOut'];
+					$timeIn[$index] = $rec['timeIn'];
+					$min = 60;
+					$shift[$index] =($timeOut[$index] - $timeIn[$index])/$min;
+				}
 				
 				$index++;
 			}
@@ -81,7 +84,9 @@
 				var shiftTime = <?php echo '["' . implode('", "', $shift) . '"]' ?>;
 				
 				// Example code from chart.js docs
-				var ctx = document.getElementById('employeeChart');
+				var canvas = document.getElementById('employeeChart');
+				var ctx = canvas.getContext('2d');
+				
 				var myChart = new Chart(ctx, {
 					type: 'bar',
 					data: {
@@ -109,9 +114,7 @@
 						}]
 					},
 					options: {
-						
-						
-						
+												
 						scales: {
 							yAxes: [{
 								ticks: {

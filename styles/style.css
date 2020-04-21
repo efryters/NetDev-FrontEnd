@@ -68,6 +68,12 @@ a.navbar-text {
     height: 100%;
 }
 
+.chart-container {
+    background-color: blanchedalmond;
+    width: 100%;
+    float: left;
+}
+
 th {
     background-color: gray;
 }
@@ -82,3 +88,4 @@ tr {
 tr:nth-child(2n) {
     background-color: whitesmoke;
 }
+
